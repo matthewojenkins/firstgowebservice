@@ -2,7 +2,7 @@ package database
 
 import (
 	"log"
-	. "oakdene.net/firstgoservice/model"
+	. "github.com/matthewojenkins/firstgowebservice/model"
 )
 
 func SaveProgram(program string) error {

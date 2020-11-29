@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	. "oakdene.net/firstgoservice/database"
-	. "oakdene.net/firstgoservice/model"
+	. "github.com/matthewojenkins/firstgowebservice/database"
+	. "github.com/matthewojenkins/firstgowebservice/model"
 )
 
 func HandleProgramPost(w http.ResponseWriter, r *http.Request) {
