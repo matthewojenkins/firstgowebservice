@@ -1,4 +1,4 @@
-module oakdene.net/firstgoservice
+module github.com/matthewojenkins/firstgowebservice
 
 go 1.14
 

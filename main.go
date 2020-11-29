@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	. "oakdene.net/firstgoservice/handlers"
+	. "github.com/matthewojenkins/firstgowebservice/handlers"
 )
 
 func main() {
