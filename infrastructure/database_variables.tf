@@ -27,10 +27,6 @@ variable db_pricing_plan {
   description = "First generation only. Pricing plan for this instance, can be one of PER_USE or PACKAGE"
   default = "PER_USE"
 }
-variable db_instance_access_cidr {
-  description = "The IPv4 CIDR to provide access the database instance"
-  default = "0.0.0.0/0"
-}
 # database settings
 variable db_name {
   description = "Name of the default database to create"

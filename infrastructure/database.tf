@@ -1,8 +1,20 @@
+
+# create database
+resource "google_sql_database" "programservicedb" {
+  name = var.db_name
+  project = var.project_id
+  instance = google_sql_database_instance.postgresql.name
+  charset = var.db_charset
+  collation = var.db_collation
+}
+
+
 resource "google_sql_database_instance" "postgresql" {
   name = join ("", [var.app_name, "-db1"])
-  project = var.app_project
+  project = var.project_id
   region = var.gcp_region_1
   database_version = var.db_version
+  depends_on = [google_service_networking_connection.private_vpc_connection]
 
   settings {
     tier = var.db_tier
@@ -22,27 +34,15 @@ resource "google_sql_database_instance" "postgresql" {
     }
 
     backup_configuration {
-      binary_log_enabled = true
       enabled = true
       start_time = "00:00"
     }
 
     ip_configuration {
-      ipv4_enabled = "true"
-      authorized_networks {
-        value = var.db_instance_access_cidr
-      }
+      ipv4_enabled = "false"
+      private_network = google_compute_network.vpc-db.self_link
     }
   }
-}
-
-# create database
-resource "google_sql_database" "postgresql_db" {
-  name = var.db_name
-  project = var.app_project
-  instance = google_sql_database_instance.postgresql.name
-  charset = var.db_charset
-  collation = var.db_collation
 }
 
 # create user
