@@ -14,6 +14,12 @@
                 bat 'build.bat'
             }
         }
+        stage('Push to dockerhub') {
+            steps {
+                echo 'Pushing image to dockerhub'
+                bat 'docker login --username=mojenkins '
+                bat 'docker push mojenkins/workoutapp:programservice:1.0 '
+            }
+        }
     }
-
- }
+}
